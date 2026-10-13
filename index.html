@@ -88,6 +88,10 @@ body{
 .nav .nbtn.main{background:linear-gradient(135deg,var(--red-s),var(--red));color:#fff;border-color:transparent;flex:1.4;box-shadow:0 8px 18px -8px rgba(31,90,173,.65)}
 .nav .nbtn[disabled]{opacity:.35;cursor:default}
 .hidden{display:none!important}
+.music-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;border:2px solid var(--pink-d);background:var(--pink);color:var(--red);font:700 .95rem/1.25 var(--sans);padding:12px 18px;border-radius:999px;cursor:pointer;animation:glow 2.2s ease-in-out infinite}
+.music-cta[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff;animation:none}
+.cta-note{margin:8px 0 16px;font-size:.78rem;color:var(--gold)}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(74,139,220,.5)}50%{box-shadow:0 0 0 9px rgba(74,139,220,0)}}
 .scrollhint{white-space:nowrap;position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:rgba(255,253,249,.95);border:1px solid var(--gold-l);color:var(--gold);font:700 .78rem var(--sans);padding:6px 14px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .4s;z-index:3;animation:bob 1.6s ease-in-out infinite}
 .scrollhint.show{opacity:1}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,4px)}}
@@ -97,6 +101,7 @@ body{
   .nav{gap:6px;padding-left:10px;padding-right:10px}
 }
 @media (prefers-reduced-motion:reduce){
+  .music-cta{animation:none}
   .scrollhint{animation:none}
   .page,.page.active{transition:opacity .3s ease}
   .page.romantic,.page.romantic.before{filter:none;transform:none}
@@ -128,9 +133,9 @@ body{
         <p class="sub">3 anos de amor, risadas e uma vida inteira pela frente.</p>
         <p class="date">13 de outubro de 2026</p>
         <p class="msg">Preparei uma surpresa para você, minha vida...</p>
+        <button class="music-cta" id="musicCta" type="button" aria-pressed="false"><span id="musicCtaTxt">🎵 Antes de ler, toque aqui para ligar a nossa música</span></button>
+        <p class="cta-note">Use fones de ouvido ou aumente o volume 🔊</p>
         <button class="big-btn" type="button" data-go="next">💙 Começar nossa história</button>
-        <p style="margin-top:12px"><a class="icon-btn" href="https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Scar+Tissue" target="_blank" rel="noopener">🎵 Ouvir nossa música</a></p>
-        <p class="tip">Dica: toque em “🎵 Música” para ouvir uma trilha suave enquanto lê.</p>
       </div>
     </section>
 
@@ -168,7 +173,6 @@ body{
         <div class="sign">Com todo o meu amor, seu marido. 💙</div>
         <div class="final-actions">
           <a class="icon-btn" href="nossa-historia.pdf" download="Nossa-Historia.pdf">📄 Baixar PDF</a>
-          <a class="icon-btn" href="https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Scar+Tissue" target="_blank" rel="noopener">🎵 Ouvir nossa música</a>
           <button class="icon-btn" type="button" data-go="restart">↻ Recomeçar</button>
         </div>
       </article>
@@ -328,6 +332,7 @@ body{
     clearInterval(timer);
     setTimeout(function(){ if(!playing && ctx) ctx.suspend(); },800);
   }
+  var cta=document.getElementById('musicCta'), ctaTxt=document.getElementById('musicCtaTxt');
   var track=new Audio(); track.loop=true; track.preload='auto'; track.volume=0.85;
   var srcs=['Red_Hot_Chili_Peppers_Scar_Tissue.mp3','audio/musica.mp3'], si=0; /* toca o primeiro que existir; senão, a trilha suave */
   track.src=srcs[0];
@@ -341,7 +346,10 @@ body{
   function setUI(on){
     soundBtn.setAttribute('aria-pressed',on?'true':'false');
     soundTxt.textContent=on?'Som ligado':'Música';
+    cta.setAttribute('aria-pressed',on?'true':'false');
+    ctaTxt.textContent=on?'🎵 Música tocando — toque para pausar':'🎵 Antes de ler, toque aqui para ligar a nossa música';
   }
+  cta.addEventListener('click',function(){ soundBtn.click(); });
   soundBtn.addEventListener('click',function(){
     if(!playing){
       playing=true; setUI(true);
