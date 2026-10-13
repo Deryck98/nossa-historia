@@ -329,11 +329,15 @@ body{
     setTimeout(function(){ if(!playing && ctx) ctx.suspend(); },800);
   }
   var track=new Audio(); track.loop=true; track.preload='auto'; track.volume=0.85;
-  track.src='audio/musica.mp3'; /* se o arquivo existir, toca; se não, usa a trilha suave */
+  var srcs=['Red_Hot_Chili_Peppers_Scar_Tissue.mp3','audio/musica.mp3'], si=0; /* toca o primeiro que existir; senão, a trilha suave */
+  track.src=srcs[0];
   var useTrack=true, synthOn=false;
   function startSynth(){ if(synthOn) return; if(startMusic()){ synthOn=true; } }
   function stopSynth(){ if(!synthOn) return; synthOn=false; stopMusic(); }
-  track.addEventListener('error',function(){ useTrack=false; if(playing) startSynth(); });
+  track.addEventListener('error',function(){
+    if(si<srcs.length-1){ si++; track.src=srcs[si]; try{ track.load(); }catch(e){} return; }
+    useTrack=false; if(playing) startSynth();
+  });
   function setUI(on){
     soundBtn.setAttribute('aria-pressed',on?'true':'false');
     soundTxt.textContent=on?'Som ligado':'Música';
