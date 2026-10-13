@@ -329,9 +329,8 @@ body{
     setTimeout(function(){ if(!playing && ctx) ctx.suspend(); },800);
   }
   var track=new Audio(); track.loop=true; track.preload='auto'; track.volume=0.85;
-  var HAS_TRACK=false; /* true só se existir audio/musica.mp3 */
-  if(HAS_TRACK) track.src='audio/musica.mp3';
-  var useTrack=HAS_TRACK, synthOn=false;
+  track.src='audio/musica.mp3'; /* se o arquivo existir, toca; se não, usa a trilha suave */
+  var useTrack=true, synthOn=false;
   function startSynth(){ if(synthOn) return; if(startMusic()){ synthOn=true; } }
   function stopSynth(){ if(!synthOn) return; synthOn=false; stopMusic(); }
   track.addEventListener('error',function(){ useTrack=false; if(playing) startSynth(); });
