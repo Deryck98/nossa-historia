@@ -129,7 +129,8 @@ body{
         <p class="date">13 de outubro de 2026</p>
         <p class="msg">Preparei uma surpresa para você, minha vida...</p>
         <button class="big-btn" type="button" data-go="next">💙 Começar nossa história</button>
-        <p class="tip">Dica: toque em “🎵 Música” para ouvir a nossa música enquanto lê.</p>
+        <p style="margin-top:12px"><a class="icon-btn" href="https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Scar+Tissue" target="_blank" rel="noopener">🎵 Ouvir nossa música</a></p>
+        <p class="tip">Dica: toque em “🎵 Música” para ouvir uma trilha suave enquanto lê.</p>
       </div>
     </section>
 
@@ -167,6 +168,7 @@ body{
         <div class="sign">Com todo o meu amor, seu marido. 💙</div>
         <div class="final-actions">
           <a class="icon-btn" href="nossa-historia.pdf" download="Nossa-Historia.pdf">📄 Baixar PDF</a>
+          <a class="icon-btn" href="https://www.youtube.com/results?search_query=Red+Hot+Chili+Peppers+Scar+Tissue" target="_blank" rel="noopener">🎵 Ouvir nossa música</a>
           <button class="icon-btn" type="button" data-go="restart">↻ Recomeçar</button>
         </div>
       </article>
@@ -327,8 +329,9 @@ body{
     setTimeout(function(){ if(!playing && ctx) ctx.suspend(); },800);
   }
   var track=new Audio(); track.loop=true; track.preload='auto'; track.volume=0.85;
-  track.src='audio/musica.mp3';
-  var useTrack=true, synthOn=false;
+  var HAS_TRACK=false; /* true só se existir audio/musica.mp3 */
+  if(HAS_TRACK) track.src='audio/musica.mp3';
+  var useTrack=HAS_TRACK, synthOn=false;
   function startSynth(){ if(synthOn) return; if(startMusic()){ synthOn=true; } }
   function stopSynth(){ if(!synthOn) return; synthOn=false; stopMusic(); }
   track.addEventListener('error',function(){ useTrack=false; if(playing) startSynth(); });
