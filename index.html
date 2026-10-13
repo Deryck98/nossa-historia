@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2f7fd">
+<title>Nossa História 💙 — 3 anos de casados</title>
+<meta name="description" content="Uma surpresa para você, minha vida. 3 anos de amor, risadas e uma vida inteira pela frente.">
+<meta property="og:title" content="Nossa História 💙">
+<meta property="og:description" content="Preparei uma surpresa para você, minha vida...">
+<meta property="og:image" content="img/pagina6.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f2f7fd; --white:#fbfdff; --pink:#dbeafa; --pink-d:#a8cbee;
+  --red:#1f5aad; --red-s:#4a8bdc; --gold:#7f9fc6; --gold-l:#cadcf0; --ink:#23364f;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --script:'Great Vibes','Brush Script MT',cursive;
+  --sans:'Nunito',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--cream);color:var(--ink);font-family:var(--sans)}
+body{
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #fff 0%, transparent 60%),
+    radial-gradient(800px 500px at 100% 100%, var(--pink) 0%, transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, #e3eefb 0%, transparent 60%),
+    var(--cream);
+  touch-action:pan-y;
+}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.fh{position:absolute;bottom:-40px;opacity:0;color:var(--red-s);animation:rise linear forwards;will-change:transform,opacity}
+@keyframes rise{
+  0%{transform:translate3d(0,0,0) rotate(0);opacity:0}
+  12%{opacity:.35}
+  100%{transform:translate3d(var(--dx),-112vh,0) rotate(var(--rot));opacity:0}
+}
+#app{position:relative;z-index:1;height:100%;height:100dvh;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px 4px;min-height:48px}
+.progress{font-size:.85rem;font-weight:600;color:var(--gold);letter-spacing:.04em}
+.bar{height:3px;margin:0 14px;background:rgba(127,159,198,.2);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink-d),var(--red-s));border-radius:3px;transition:width .6s ease}
+.icon-btn{border:1px solid var(--gold-l);background:rgba(255,253,249,.85);color:var(--ink);border-radius:999px;padding:8px 13px;font:600 .82rem var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:none;transition:transform .15s,background .2s}
+.icon-btn:active{transform:scale(.96)}
+.icon-btn[aria-pressed="true"]{background:var(--pink);border-color:var(--pink-d)}
+.stage{position:relative;flex:1;min-height:0;overflow:hidden}
+.page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 14px;opacity:0;visibility:hidden;pointer-events:none;transform:translateX(40px);transition:opacity .6s ease,transform .6s ease,filter .6s ease,visibility 0s .6s}
+.page.active{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition:opacity .6s ease,transform .6s ease,filter .6s ease,visibility 0s}
+.page.before{transform:translateX(-40px)}
+.page.romantic{transform:scale(.94);filter:blur(8px)}
+.page.romantic.before{transform:scale(1.05)}
+.page.romantic.active{transform:none;filter:none}
+.frame{width:100%;max-width:min(860px,100%);display:flex;align-items:center;justify-content:center;min-height:0;flex:1}
+.frame img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;
+  box-shadow:0 0 0 6px var(--white),0 0 0 7px var(--gold-l),0 18px 40px -14px rgba(35,70,120,.30);user-select:none;-webkit-user-drag:none}
+.page.active .frame img{animation:pop .9s ease both}
+@keyframes pop{from{transform:scale(.97)}to{transform:scale(1)}}
+/* capa */
+.cover{text-align:center;gap:6px;overflow-y:auto;justify-content:flex-start;padding-top:4vh}
+.cover .inner{margin:auto;max-width:520px;width:100%;padding:24px 22px 28px;background:rgba(255,253,249,.72);border:1px solid var(--gold-l);border-radius:26px;box-shadow:0 20px 50px -22px rgba(35,70,120,.28);position:relative}
+.cover .inner:before{content:"";position:absolute;inset:8px;border:1px solid rgba(127,159,198,.35);border-radius:19px;pointer-events:none}
+.orn{color:var(--gold);letter-spacing:.5em;font-size:.8rem}
+.cover h1{font-family:var(--script);font-weight:400;font-size:clamp(3rem,15vw,5rem);line-height:1.05;color:var(--red);margin:8px 0 4px}
+.cover .sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,4.8vw,1.5rem);line-height:1.3;color:var(--ink)}
+.cover .date{margin:14px 0 4px;font-family:var(--serif);font-size:1.15rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.cover .msg{font-family:var(--serif);font-size:1.25rem;margin:10px 0 18px;color:var(--ink)}
+.big-btn{border:0;cursor:pointer;font:700 1.05rem var(--sans);color:#fff;background:linear-gradient(135deg,var(--red-s),var(--red));padding:15px 26px;border-radius:999px;box-shadow:0 10px 24px -8px rgba(31,90,173,.65);transition:transform .15s;animation:beat 2.4s ease-in-out infinite}
+.big-btn:active{transform:scale(.97)}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+.tip{margin-top:14px;font-size:.8rem;color:#8a6f6a}
+/* declaração */
+.letter{overflow-y:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+.paper{margin:auto;width:100%;max-width:640px;background:rgba(255,253,249,.9);border:1px solid var(--gold-l);border-radius:22px;padding:26px 24px 24px;box-shadow:0 20px 50px -22px rgba(35,70,120,.28);position:relative}
+.paper:before{content:"";position:absolute;inset:8px;border:1px solid rgba(127,159,198,.3);border-radius:15px;pointer-events:none}
+.paper h2{font-family:var(--script);font-weight:400;color:var(--red);font-size:2.6rem;margin-bottom:10px}
+.paper p{font-family:var(--serif);font-size:clamp(1.12rem,4.4vw,1.32rem);line-height:1.5;margin-bottom:12px;color:var(--ink)}
+.paper p.hl{font-weight:600;color:var(--red)}
+.paper .sign{font-family:var(--script);font-size:1.9rem;color:var(--red);text-align:right;margin-top:14px;line-height:1.2}
+.final-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.paper .final-actions .icon-btn,.paper .final-actions .big-btn{animation:none}
+.paper .final-actions .big-btn{font-size:.95rem;padding:12px 20px}
+/* navegação */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 14px calc(12px + env(safe-area-inset-bottom))}
+.nav .nbtn{flex:1;border:1px solid var(--gold-l);background:rgba(255,253,249,.92);color:var(--ink);font:700 .95rem var(--sans);padding:13px 8px;border-radius:14px;cursor:pointer;transition:transform .15s,opacity .2s}
+.nav .nbtn:active{transform:scale(.97)}
+.nav .nbtn.main{background:linear-gradient(135deg,var(--red-s),var(--red));color:#fff;border-color:transparent;flex:1.4;box-shadow:0 8px 18px -8px rgba(31,90,173,.65)}
+.nav .nbtn[disabled]{opacity:.35;cursor:default}
+.hidden{display:none!important}
+.scrollhint{white-space:nowrap;position:absolute;left:50%;bottom:8px;transform:translateX(-50%);background:rgba(255,253,249,.95);border:1px solid var(--gold-l);color:var(--gold);font:700 .78rem var(--sans);padding:6px 14px;border-radius:999px;pointer-events:none;opacity:0;transition:opacity .4s;z-index:3;animation:bob 1.6s ease-in-out infinite}
+.scrollhint.show{opacity:1}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,4px)}}
+.page.letter{padding-bottom:34px}
+@media (max-width:360px){
+  .nav .nbtn{font-size:.8rem;padding:12px 4px}
+  .nav{gap:6px;padding-left:10px;padding-right:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .scrollhint{animation:none}
+  .page,.page.active{transition:opacity .3s ease}
+  .page.romantic,.page.romantic.before{filter:none;transform:none}
+  .big-btn,.page.active .frame img{animation:none}
+  .fh{display:none}
+}
+@media (min-width:700px){.nav{max-width:640px;width:100%;margin:0 auto}}
+</style>
+</head>
+<body>
+<div id="hearts" aria-hidden="true"></div>
+
+<div id="app">
+  <div class="topbar">
+    <span class="progress" id="progress" aria-live="polite">Capa</span>
+    <div style="display:flex;gap:8px">
+      <button class="icon-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Ativar ou desativar a música">🎵 <span id="soundTxt">Música</span></button>
+    </div>
+  </div>
+  <div class="bar" aria-hidden="true"><i id="barFill"></i></div>
+
+  <main class="stage" id="stage">
+
+    <!-- 1. Capa -->
+    <section class="page cover active" data-title="Capa" aria-label="Capa">
+      <div class="inner">
+        <div class="orn">✦ 💙 ✦</div>
+        <h1>Nossa História 💙</h1>
+        <p class="sub">3 anos de amor, risadas e uma vida inteira pela frente.</p>
+        <p class="date">13 de outubro de 2026</p>
+        <p class="msg">Preparei uma surpresa para você, minha vida...</p>
+        <button class="big-btn" type="button" data-go="next">💙 Começar nossa história</button>
+        <p class="tip">Dica: toque em “🎵 Música” para ouvir a nossa música enquanto lê.</p>
+      </div>
+    </section>
+
+    <!-- 2 a 7. Ilustrações (os textos já fazem parte das imagens originais) -->
+    <section class="page" aria-label="Existem 2 tipos de pessoas">
+      <div class="frame"><img src="img/pagina1.jpg" width="1374" height="1145" alt="Existem 2 tipos de pessoas: ela, de braços cruzados, e ele, de mãos nos bolsos, sorrindo."></div>
+    </section>
+    <section class="page" aria-label="Uma é rápida, quer tudo pra ontem">
+      <div class="frame"><img src="img/pagina2.jpg" width="1374" height="1145" alt="Uma é rápida, quer tudo pra ontem: ela sai apressada olhando o relógio."></div>
+    </section>
+    <section class="page" aria-label="A outra é tão lenta que chega a irritar">
+      <div class="frame"><img src="img/pagina3.jpg" width="1374" height="1145" alt="A outra é tão lenta que chega a irritar: ele relaxa no banquinho com o celular enquanto ela espera."></div>
+    </section>
+    <section class="page romantic" aria-label="E eles se casaram">
+      <div class="frame"><img src="img/pagina4.jpg" width="1374" height="1145" alt="E eles se casaram: os dois de mãos dadas, ela de vestido de noiva com o buquê no alto."></div>
+    </section>
+    <section class="page" aria-label="Hoje somos nós, uma família">
+      <div class="frame"><img src="img/pagina5.jpg" width="1374" height="1145" alt="Hoje somos nós, uma família: Kelly, o marido e as filhas Valentina e Agatha abraçados no sofá."></div>
+    </section>
+    <section class="page romantic" aria-label="3 anos de casados">
+      <div class="frame"><img src="img/pagina6.jpg" width="1374" height="1145" alt="3 anos de casados: o casal abraçado, 13/10/2026."></div>
+    </section>
+
+    <!-- 8. Declaração -->
+    <section class="page letter romantic" data-title="Declaração" aria-label="Declaração final">
+      <article class="paper">
+        <h2>Minha vida,</h2>
+        <p>Quem diria que duas pessoas tão diferentes construiriam uma história tão bonita?</p>
+        <p>Você com seu jeitinho apressado, eu com minha tranquilidade... Kkkkk.</p>
+        <p>Entre nossas diferenças, nossas risadas, nossos desafios e nossas conquistas, construímos algo muito maior do que imaginávamos: nossa família.</p>
+        <p>Hoje, olhando para você, para a Valentina e para a Agatha, tenho ainda mais certeza de que escolheria viver tudo novamente ao seu lado.</p>
+        <p>Obrigado por cada momento, por cada sorriso e por dividir essa caminhada comigo.</p>
+        <p class="hl">Feliz 3 anos de casamento, minha vida!</p>
+        <p class="hl">Te amo para todo sempre, minha vida! 💙</p>
+        <div class="sign">Com todo o meu amor, seu marido. 💙</div>
+        <div class="final-actions">
+          <a class="icon-btn" href="nossa-historia.pdf" download="Nossa-Historia.pdf">📄 Baixar PDF</a>
+          <button class="icon-btn" type="button" data-go="restart">↻ Recomeçar</button>
+        </div>
+      </article>
+    </section>
+    <div class="scrollhint" id="scrollHint">▼ role para ler até o final</div>
+  </main>
+
+  <nav class="nav" aria-label="Navegação do livro">
+    <button class="nbtn" id="homeBtn" type="button">🏠 Início</button>
+    <button class="nbtn" id="prevBtn" type="button">‹ Voltar</button>
+    <button class="nbtn main" id="nextBtn" type="button">Próxima ›</button>
+  </nav>
+</div>
+
+<script>
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('.page'));
+  var total=pages.length, cur=0, busy=false;
+  var progress=document.getElementById('progress'), fill=document.getElementById('barFill');
+  var prev=document.getElementById('prevBtn'), next=document.getElementById('nextBtn'), home=document.getElementById('homeBtn');
+
+  function render(){
+    pages.forEach(function(p,i){
+      p.classList.toggle('active',i===cur);
+      p.classList.toggle('before',i<cur);
+      p.setAttribute('aria-hidden',i===cur?'false':'true');
+    });
+    progress.textContent = cur===0 ? 'Capa' : 'Página '+(cur+1)+' de '+total;
+    fill.style.width = (cur/(total-1)*100)+'%';
+    prev.disabled = cur===0;
+    home.disabled = cur===0;
+    if(cur===total-1){ next.textContent='↻ Recomeçar'; }
+    else if(cur===0){ next.textContent='💙 Começar'; }
+    else { next.textContent='Próxima ›'; }
+    var scroller=pages[cur];
+    if(scroller) scroller.scrollTop=0;
+    updateHint();
+    if(cur>0 && cur<total-1) burst(6);
+    if(cur===total-1) burst(24);
+  }
+  var hint=document.getElementById('scrollHint'), letter=pages[total-1];
+  function updateHint(){
+    var more = cur===total-1 && (letter.scrollHeight-letter.clientHeight-letter.scrollTop>24);
+    hint.classList.toggle('show',more);
+  }
+  letter.addEventListener('scroll',updateHint,{passive:true});
+  window.addEventListener('resize',updateHint);
+  function go(n){
+    if(n<0||n>=total||n===cur) return;
+    cur=n; render();
+  }
+  function advance(){ if(cur===total-1){ go(0); } else { go(cur+1); } }
+  next.addEventListener('click',advance);
+  prev.addEventListener('click',function(){ go(cur-1); });
+  home.addEventListener('click',function(){ go(0); });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-go]'); if(!b) return;
+    if(b.dataset.go==='next') go(cur+1);
+    if(b.dataset.go==='restart') go(0);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown') { if(cur<total-1) go(cur+1); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') go(cur-1);
+    else if(e.key==='Home') go(0);
+  });
+
+  /* deslizar o dedo */
+  var sx=0, sy=0, st=0, tracking=false;
+  var stage=document.getElementById('stage');
+  stage.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1){tracking=false;return;}
+    sx=e.touches[0].clientX; sy=e.touches[0].clientY; st=Date.now(); tracking=true;
+  },{passive:true});
+  stage.addEventListener('touchend',function(e){
+    if(!tracking) return; tracking=false;
+    var t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)*1.4 && Date.now()-st<900){
+      if(dx<0){ if(cur<total-1) go(cur+1); } else go(cur-1);
+    }
+  },{passive:true});
+
+  /* corações flutuantes */
+  var hl=document.getElementById('hearts');
+  var reduce=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var glyphs=['♥','♥','❥'];
+  function heart(){
+    if(reduce) return;
+    var h=document.createElement('span'); h.className='fh';
+    h.textContent=glyphs[Math.floor(Math.random()*glyphs.length)];
+    var size=10+Math.random()*18;
+    h.style.left=(Math.random()*100)+'%';
+    h.style.fontSize=size+'px';
+    h.style.setProperty('--dx',((Math.random()-.5)*80)+'px');
+    h.style.setProperty('--rot',((Math.random()-.5)*50)+'deg');
+    h.style.animationDuration=(9+Math.random()*7)+'s';
+    h.style.color=Math.random()>.5?'#4a8bdc':'#a8cbee';
+    hl.appendChild(h);
+    setTimeout(function(){ h.remove(); },17000);
+  }
+  function burst(n){ for(var i=0;i<n;i++) setTimeout(heart,i*120); }
+  setInterval(function(){ if(!document.hidden && hl.childElementCount<14) heart(); },1400);
+  burst(5);
+
+  /* música instrumental gerada no próprio aparelho (sem arquivos, sem direitos autorais) */
+  var soundBtn=document.getElementById('soundBtn'), soundTxt=document.getElementById('soundTxt');
+  var ctx=null, master=null, timer=null, playing=false, step=0, nextTime=0;
+  var BPM=66, EIGHTH=60/BPM/2;
+  var f={C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196,A3:220,B3:246.94,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,G5:783.99};
+  var prog=[
+    {bass:f.C3, arp:[f.C4,f.E4,f.G4,f.C5,f.G4,f.E4,f.C5,f.E5]},
+    {bass:f.G3/2*1, arp:[f.B3,f.D4,f.G4,f.B4,f.G4,f.D4,f.B4,f.D5]},
+    {bass:f.A3/2*1, arp:[f.C4,f.E4,f.A4,f.C5,f.A4,f.E4,f.C5,f.E5]},
+    {bass:f.F3/1, arp:[f.C4,f.F4,f.A4,f.C5,f.A4,f.F4,f.C5,f.F4*2]}
+  ];
+  function tone(freq,t,dur,type,vol){
+    var o=ctx.createOscillator(), g=ctx.createGain();
+    o.type=type; o.frequency.value=freq;
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.exponentialRampToValueAtTime(vol,t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(g); g.connect(master);
+    o.start(t); o.stop(t+dur+0.05);
+  }
+  function schedule(){
+    while(nextTime<ctx.currentTime+0.4){
+      var bar=Math.floor(step/8)%prog.length, i=step%8, c=prog[bar];
+      if(i===0){ tone(c.bass,nextTime,EIGHTH*7.5,'sine',0.20); tone(c.bass*2,nextTime,EIGHTH*7.5,'sine',0.05); }
+      tone(c.arp[i],nextTime,EIGHTH*3.2,'triangle',0.11);
+      if(i%4===0) tone(c.arp[i]*2,nextTime,EIGHTH*2,'sine',0.03);
+      nextTime+=EIGHTH; step++;
+    }
+  }
+  function startMusic(){
+    var AC=window.AudioContext||window.webkitAudioContext; if(!AC) return false;
+    if(!ctx){
+      ctx=new AC(); master=ctx.createGain(); master.gain.value=0.0001;
+      var d=ctx.createDelay(1.0); d.delayTime.value=0.33;
+      var fb=ctx.createGain(); fb.gain.value=0.35;
+      var wet=ctx.createGain(); wet.gain.value=0.45;
+      var lp=ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=2600;
+      master.connect(lp); lp.connect(ctx.destination);
+      lp.connect(d); d.connect(fb); fb.connect(d); d.connect(wet); wet.connect(ctx.destination);
+    }
+    if(ctx.state==='suspended') ctx.resume();
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value,ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.55,ctx.currentTime+1.5);
+    nextTime=ctx.currentTime+0.1; step=0;
+    schedule(); timer=setInterval(schedule,120);
+    return true;
+  }
+  function stopMusic(){
+    if(!ctx) return;
+    master.gain.cancelScheduledValues(ctx.currentTime);
+    master.gain.setValueAtTime(master.gain.value,ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.0001,ctx.currentTime+0.6);
+    clearInterval(timer);
+    setTimeout(function(){ if(!playing && ctx) ctx.suspend(); },800);
+  }
+  var track=new Audio(); track.loop=true; track.preload='auto'; track.volume=0.85;
+  track.src='audio/musica.mp3';
+  var useTrack=true, synthOn=false;
+  function startSynth(){ if(synthOn) return; if(startMusic()){ synthOn=true; } }
+  function stopSynth(){ if(!synthOn) return; synthOn=false; stopMusic(); }
+  track.addEventListener('error',function(){ useTrack=false; if(playing) startSynth(); });
+  function setUI(on){
+    soundBtn.setAttribute('aria-pressed',on?'true':'false');
+    soundTxt.textContent=on?'Som ligado':'Música';
+  }
+  soundBtn.addEventListener('click',function(){
+    if(!playing){
+      playing=true; setUI(true);
+      if(useTrack){
+        var pr=track.play();
+        if(pr && pr.catch){ pr.catch(function(){ useTrack=false; if(playing) startSynth(); }); }
+      } else { startSynth(); }
+    } else {
+      playing=false; setUI(false);
+      try{ track.pause(); }catch(e){}
+      stopSynth();
+    }
+  });
+  document.addEventListener('visibilitychange',function(){
+    if(!playing) return;
+    if(document.hidden){ try{ track.pause(); }catch(e){} if(ctx&&synthOn) ctx.suspend(); }
+    else { if(useTrack){ var p=track.play(); if(p&&p.catch) p.catch(function(){}); } if(ctx&&synthOn) ctx.resume(); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
